@@ -1,31 +1,40 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const AppItem = props => {
   return (
-    <View
-      style={[
-        styles.itemContainer,
-        {
-          backgroundColor: props.appdata.colors[0],
-        },
-      ]}>
-      <View style={styles.innerContainer}>
-        <View
-          style={[
-            styles.iconStyle,
-            {backgroundColor: props.appdata.colors[1]},
-          ]}>
-          <Text style={styles.iconText}>{props.appdata.id}</Text>
+    <TouchableOpacity
+      onPress={() =>
+        props.navigation.navigate(props.appdata.route, {
+          screen: 'AuthScreens',
+          params: {projects: props.appdata.projects},
+        })
+      }>
+      <View
+        style={[
+          styles.itemContainer,
+          {
+            backgroundColor: props.appdata.colors[0],
+          },
+        ]}>
+        <View style={styles.innerContainer}>
+          <View
+            style={[
+              styles.iconStyle,
+              {backgroundColor: props.appdata.colors[1]},
+            ]}>
+            <Text style={styles.iconText}>{props.appdata.id}</Text>
+          </View>
+          <View style={styles.appTitleContainer}>
+            <Text style={{color: '#FFF'}}>{props.appdata.title}</Text>
+          </View>
         </View>
-        <View style={styles.appTitleContainer}>
-          <Text style={{color: '#FFF'}}>{props.appdata.title}</Text>
+        <View style={styles.arrowRight}>
+          <Ionicons name="arrow-forward-circle-sharp" color="#FFF" size={20} />
         </View>
       </View>
-      <View style={styles.arrowRight}>
-        <Text>0</Text>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -43,7 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    elevation: 2,
+    elevation: 1,
   },
   innerContainer: {
     flexDirection: 'row',
@@ -67,6 +76,10 @@ const styles = StyleSheet.create({
   arrowRight: {
     // alignSelf: 'flex-end',
   },
+
+  //   shadow: {
+
+  //   },
 });
 
 export default AppItem;

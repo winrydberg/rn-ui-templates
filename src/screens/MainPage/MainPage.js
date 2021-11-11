@@ -10,8 +10,10 @@ import styles from './styles';
 import apps from '../../resources/apps';
 import AppItem from '../../components/mainpage/AppItem';
 
-export default function MainPage() {
-  const renderAppItem = ({item}) => <AppItem appdata={item} />;
+export default function MainPage(props) {
+  const renderAppItem = ({item}) => (
+    <AppItem appdata={item} navigation={props.navigation} />
+  );
 
   return (
     <View>

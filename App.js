@@ -17,13 +17,16 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import 'react-native-gesture-handler';
 import MainPage from './src/screens/MainPage/MainPage';
+import MainPageNavigator from './src/Navigator';
 
 const App: () => Node = () => {
   return (
-    <SafeAreaView>
-      <MainPage></MainPage>
-    </SafeAreaView>
+    <NavigationContainer>
+      <MainPageNavigator></MainPageNavigator>
+    </NavigationContainer>
   );
 };
 
